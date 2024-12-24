@@ -1,0 +1,6 @@
+Lustratio.Client_HostAddress = http://localhost:5067
+
+GET {{Lustratio.Client_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
