@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Lustratio.Client.Controllers;
+namespace Lustratio.Server.Controllers;
 
 [ApiController]
 [Route("[controller]")]

@@ -1,4 +1,4 @@
-namespace Lustratio.Client;
+namespace Lustratio.Server;
 
 public class WeatherForecast
 {

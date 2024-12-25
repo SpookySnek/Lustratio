@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lustratio.Client", "Lustratio.Client\Lustratio.Client.csproj", "{000A174C-8B26-4702-A55E-EF0B5AA3C3BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lustratio.Server", "Lustratio.Server\Lustratio.Server.csproj", "{000A174C-8B26-4702-A55E-EF0B5AA3C3BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
