@@ -1,1 +1,1 @@
--
+- Vertical Slice Architecture
