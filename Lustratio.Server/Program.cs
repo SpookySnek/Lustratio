@@ -1,4 +1,16 @@
+using Lustratio.Server.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var folder = Environment.SpecialFolder.LocalApplicationData;
+var path = Environment.GetFolderPath(folder);
+string DbPath = System.IO.Path.Join(path, "database.db");
+
+builder.Services.AddDbContext<DataContext>(options =>
+{
+    options.UseSqlite($"Data Source={DbPath}");
+});
 
 // Add services to the container.
 
@@ -13,6 +25,7 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
 
 app.UseHttpsRedirection();
 
