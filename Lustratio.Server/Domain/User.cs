@@ -35,7 +35,7 @@ public class User
 
     public DateTime? DeactivatedAt { get; set; }
     
-    public ICollection<Gallery> Galleries { get; set; } = new List<Gallery>();
+    public ICollection<Gallery>? Galleries { get; set; } = new List<Gallery>();
 
     // public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
 }

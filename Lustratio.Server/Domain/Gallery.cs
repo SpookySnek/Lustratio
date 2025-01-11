@@ -18,5 +18,5 @@ public class Gallery
     
     public required User User { get; set; }
     
-    public ICollection<Photo> Photos { get; set; } = new List<Photo>();
+    public ICollection<Photo>? Photos { get; set; } = new List<Photo>();
 }
