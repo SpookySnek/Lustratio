@@ -5,11 +5,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 var folder = Environment.SpecialFolder.LocalApplicationData;
 var path = Environment.GetFolderPath(folder);
-string DbPath = System.IO.Path.Join(path, "database.db");
+var dbPath = Path.Join(path, "database.db");
 
 builder.Services.AddDbContext<DataContext>(options =>
 {
-    options.UseSqlite($"Data Source={DbPath}");
+    options.UseSqlite($"Data Source={dbPath}");
 });
 
 // Add services to the container.
