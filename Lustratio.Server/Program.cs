@@ -12,6 +12,7 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlite($"Data Source={dbPath}");
 });
 
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -20,12 +21,14 @@ builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline & Seed the database with data
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    using var scope = app.Services.CreateScope();
+    var dataContext = scope.ServiceProvider.GetRequiredService<DataContext>();
+    new DbSeeder().SeedData(dataContext);
 }
-
 
 app.UseHttpsRedirection();
 
