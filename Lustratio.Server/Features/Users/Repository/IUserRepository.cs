@@ -1,6 +1,6 @@
 using Lustratio.Server.Domain;
 
-namespace Lustratio.Server.Features.Users;
+namespace Lustratio.Server.Features.Users.Repository;
 
 public interface IUserRepository
 {
