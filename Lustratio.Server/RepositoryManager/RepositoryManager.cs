@@ -64,3 +64,5 @@ public class RepositoryManager : IRepositoryManager
         await _context.SaveChangesAsync();
     }
 }
+
+// Switch to implicit lazy loading?

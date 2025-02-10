@@ -1,4 +1,5 @@
 using Lustratio.Server.Data;
+using Lustratio.Server.RepositoryManager;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 
 
 // Add services to the container.
+builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

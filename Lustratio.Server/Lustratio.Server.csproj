@@ -22,7 +22,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="ServiceManager\" />
+      <Folder Include="Features\Galleries\Requests\" />
+      <Folder Include="Features\Photos\Requests\" />
+      <Folder Include="Features\Users\Requests\" />
     </ItemGroup>
 
 </Project>
