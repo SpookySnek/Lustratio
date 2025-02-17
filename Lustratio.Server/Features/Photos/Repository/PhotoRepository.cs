@@ -25,4 +25,12 @@ public class PhotoRepository : IPhotoRepository
         return await _context.Photos
             .FirstOrDefaultAsync(x => x.Id == photoId);
     }
+    
+    public async Task<IEnumerable<Photo>> GetAllPhotosForGalleryAsync(int galleryId)
+    {
+        return await _context.Photos
+            .Where(x => x.Gallery.Id == galleryId)
+            .OrderBy(x => x.Id)
+            .ToListAsync();
+    }
 }

@@ -7,7 +7,7 @@ namespace Lustratio.Server.Features.Photos.Requests;
 
 public class GetAllPhotosForGallery
 {
-    public class GetAllPhotosForGalleryQuery : IRequest<IEnumerable<Photo>>
+    public class GetAllPhotosForGalleryQuery : IRequest<IEnumerable<PhotoResult>>
     {
         public int GalleryId { get; set; }
     }
@@ -22,6 +22,7 @@ public class GetAllPhotosForGallery
         public string? Location { get; set; }
     }
 
+    // TODO: More explanatory name
     public class Handler : IRequestHandler<GetAllPhotosForGalleryQuery, IEnumerable<PhotoResult>>
     {
         private readonly IRepositoryManager _repositoryManager;
@@ -31,6 +32,22 @@ public class GetAllPhotosForGallery
         {
             _repositoryManager = repositoryManager;
             _mapper = mapper;
+        }
+        
+        public async Task<IEnumerable<PhotoResult>> Handle(GetAllPhotosForGalleryQuery request, CancellationToken cancellationToken)
+        {
+            var gallery = await _repositoryManager.Gallery.GetGalleryByIdAsync(request.GalleryId);
+            
+            if (gallery == null)
+            {   // TODO: Custom exception
+                throw new Exception($"Gallery with id {request.GalleryId} not found");
+            }
+            
+            var photos = await _repositoryManager.Photo.GetAllPhotosForGalleryAsync(request.GalleryId);
+            
+            var result = _mapper.Map<IEnumerable<PhotoResult>>(photos);
+
+            return result;
         }
     }
 }
