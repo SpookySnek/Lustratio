@@ -7,11 +7,13 @@ namespace Lustratio.Server.Features.Photos.Requests;
 
 public class GetAllPhotosForGallery
 {
+    // Request
     public class GetAllPhotosForGalleryQuery : IRequest<IEnumerable<PhotoResult>>
     {
         public int GalleryId { get; set; }
     }
     
+    // Result
     public class PhotoResult
     {
         public int Id { get; set; }
@@ -20,9 +22,10 @@ public class GetAllPhotosForGallery
         public DateTime? PhotoDate { get; set; }
         public string? Description { get; set; }
         public string? Location { get; set; }
+        public int GalleryId { get; set; }
     }
-
-    // TODO: More explanatory name
+    
+    // Handler
     public class Handler : IRequestHandler<GetAllPhotosForGalleryQuery, IEnumerable<PhotoResult>>
     {
         private readonly IRepositoryManager _repositoryManager;

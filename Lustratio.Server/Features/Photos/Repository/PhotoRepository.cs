@@ -33,4 +33,18 @@ public class PhotoRepository : IPhotoRepository
             .OrderBy(x => x.Id)
             .ToListAsync();
     }
+
+    public async Task AddPhotoToGalleryAsync(int galleryId, Photo photo)
+    {
+        var gallery = await _context.Galleries.FirstOrDefaultAsync(x => x.Id == galleryId);
+    
+        if (gallery == null)
+        {
+            throw new Exception($"Gallery with id {galleryId} not found");
+        }
+    
+        photo.Gallery = gallery;
+    
+        await _context.Photos.AddAsync(photo);
+    }
 }
