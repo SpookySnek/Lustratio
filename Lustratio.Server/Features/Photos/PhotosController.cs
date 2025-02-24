@@ -6,7 +6,7 @@ using static Lustratio.Server.Features.Photos.Requests.AddPhotoToGallery;
 
 namespace Lustratio.Server.Features.Photos;
 
-[Route("api/[controller]")]
+[Route("api/gallery/{galleryId}/photos")]
 [ApiController]
 public class PhotosController : ControllerBase
 {
@@ -34,23 +34,23 @@ public class PhotosController : ControllerBase
         return CreatedAtRoute("GetAllPhotosForGallery", new { galleryId = command.GalleryId }, result);
     }
     
-    [HttpPut]
-    public async Task<ActionResult> UpdatePhoto(int photoId, UpdatePhotoCommand command)
-    {
-        command.PhotoId = photoId;
-        await _mediator.Send(command);
-        
-        return NoContent();
-    }
-    
-    [HttpDelete]
-    public async Task<ActionResult> RemovePhoto(int photoId, RemovePhotoCommand command)
-    {
-        command.PhotoId = photoId;
-        await _mediator.Send(command);
-        
-        return NoContent();
-    }
+    // [HttpPut]
+    // public async Task<ActionResult> UpdatePhoto(int photoId, UpdatePhotoCommand command)
+    // {
+    //     command.PhotoId = photoId;
+    //     await _mediator.Send(command);
+    //     
+    //     return NoContent();
+    // }
+    //
+    // [HttpDelete]
+    // public async Task<ActionResult> RemovePhoto(int photoId, RemovePhotoCommand command)
+    // {
+    //     command.PhotoId = photoId;
+    //     await _mediator.Send(command);
+    //     
+    //     return NoContent();
+    // }
     // [HttpGet]
     // public async Task<ActionResult<IEnumerable<Photo>>> GetAllPhotos()
     // {
